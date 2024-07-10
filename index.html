@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('C:/Users/Viktoria/Downloads/ezgif-5-ffb97d4927.jpg');
+            background-size: cover; /* Cover the entire viewport */
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #333;
+        }
+
+        header {
+            font-size: 60px;
+            margin-bottom: 20px;
+            font-family: 'Agatha', cursive;
+            color: #FF5733;
+            text-shadow: -1px -1px 0 #000,  
+                         1px -1px 0 #000,
+                        -1px  1px 0 #000,
+                         1px  1px 0 #000;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start; /* Align items at the top of the container */
+        }
+
+        #left-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align items to the start of the panel */
+            margin-right: 20px; /* Adjust as needed */
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid #000;
+        }
+
+        canvas {
+            border: 2px solid #000;
+            background-color: #E7D37F;
+        }
+
+        #gameInfo {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #score {
+            font-size: 40px;
+            margin: 0;
+            color: #007BFF;
+            text-shadow: -1px -1px 0 #000,  
+                         1px -1px 0 #000,
+                        -1px  1px 0 #000,
+                         1px  1px 0 #000;
+        }
+
+        #gameOverMessage {
+            display: none; /* Initially hidden */
+            font-size: 24px;
+            color: red;
+            font-weight: bold;
+        }
+
+        .level-selector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+
+        .level-selector .level {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #007bff;
+            margin: 5px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <audio id="gameOverSound">
+        <source src="C:\Users\Viktoria\Downloads\mixkit-sad-game-over-trombone-471.mpeg" type="audio/mpeg">
+        <source src="C:\Users\Viktoria\Downloads\mixkit-sad-game-over-trombone-471.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="eatingSound">
+        <source src="C:\Users\Viktoria\Downloads\mixkit-chewing-something-crunchy-2244.mp3" type="audio/mp3">
+        <source src="C:\Users\Viktoria\Downloads\mixkit-chewing-something-crunchy-2244.mpeg" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+   
+    <header>Snake Game</header>
+    <div class="container">
+        <div id="left-panel">
+            <div class="color-option" style="background-color: green;" data-color="green"></div>
+            <div class="color-option" style="background-color: red;" data-color="red"></div>
+            <div class="color-option" style="background-color: blue;" data-color="blue"></div>
+            <div class="color-option" style="background-color: yellow;" data-color="yellow"></div>
+            <div class="color-option" style="background-color: purple;" data-color="purple"></div>
+            <div class="color-option" style="background-color: orange;" data-color="orange"></div>
+        </div>
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        <div class="level-selector">
+            <div class="level" data-level="1">1</div>
+            <div class="level" data-level="2">2</div>
+            <div class="level" data-level="3">3</div>
+            <div class="level" data-level="4">4</div>
+            <div class="level" data-level="5">5</div>
+            <div class="level" data-level="6">6</div>
+            <div class="level" data-level="7">7</div>
+            <div class="level" data-level="8">8</div>
+            <div class="level" data-level="9">9</div>
+            <div class="level" data-level="10">10</div>
+        </div>
+    </div>
+    <div id="gameInfo">
+        <p id="score">Score: 0</p>
+    
+        <button id="startButton" class="button">Start Game</button>
+        <button id="restartButton" class="button">Restart Game</button>
+        <button id="pauseButton" class="button">Pause Game</button>
+    </div>
+    <script src="snake.js"></script>
+</body>
+</html>
