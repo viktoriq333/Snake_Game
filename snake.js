@@ -1,3 +1,4 @@
+// Get canvas element and context
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -204,6 +205,10 @@ function draw() {
     if (collision(newHead, snake)) {
         clearInterval(gameInterval);
         gameOverSound.play(); // Play game over sound
+
+        // Show game over message
+        gameOverMessage.style.display = "block";
+        gameOverMessage.textContent = "Game Over!";
 
         // Add event listener back for start button after game over
         startButton.addEventListener("click", startGame);
